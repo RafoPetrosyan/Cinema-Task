@@ -1,0 +1,26 @@
+.table{
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    z-index: 0;
+}
+.table th, td{
+    width: 70px;
+    height: 70px;
+}
+.bord{
+    border: 1px solid black;
+}
+.backgroundGreen{
+    background-color: green;
+}
+.backgroundRed{
+    background-color: red;
+}
+.tdImg{
+    width: 100%;
+    height: 100%;
+}
+.parentImg{
+    cursor: pointer;
+}
