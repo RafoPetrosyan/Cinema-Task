@@ -1,46 +1,56 @@
 .cart{
-    width: 470px;
-    height: 200px;
-    position: relative;
-    z-index: 1;
-    background-color: #dfedff;
-    border-radius: 5px;
-    margin-top: 303px;
-    margin-left: 80px;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
-.p{
-    margin-top: 0;
-    text-align: center;
+.btnDiv{
+    margin-bottom: 10px;
 }
-.btn{
+.deleteBtn{
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    background-color: #def8fd;
     border: none;
-    font-size: 30px;
-    background-color: #dfedff;
     cursor: pointer;
 }
+.deleteBtn:hover{
+    color: red;
+}
 .editeBtn{
-    font-size: 16px;
-    background-color: #dfedff;
+    background-color: #ace8f3;
     border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #ace8f3;
+}
+.info{
+    width: 70%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }
 .editeBtn:hover{
     color: red;
 }
-.btn:hover{
+.info:hover{
     color: red;
 }
-.btnDiv{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+.p{
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 3px;
 }
-.text{
-    text-align: center;
+.p span{
+    color: red;
 }
-.form{
-    display: flex;
-    justify-content: center;
+.input{
+    margin-left: 15%;
+    width: 60%;
+}
+.btn{
+    cursor: pointer;
+}
+.btn:hover{
+    color: white;
+    background-color: black;
 }

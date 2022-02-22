@@ -1,78 +1,73 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useState} from "react";
 import { useDispatch } from "react-redux";
+import { editeUpperCase } from "../../helpers/constant";
 import { booking } from "../../store/cinemaReducer";
-import { date, setName, testFullName } from "../../helpers/constant";
 import styles from './Booking.module.css';
-import stylesCart from '../Carts/Cart.module.css';
 
-
-const Booking = ({showBook, bookingElem, elementNumber}) =>{
+const Booking = ({element, row, number}) =>{
 
     const dispatch = useDispatch();
-    const ref = useRef(null);
-    const [fullName, setFullName] = useState('');
-    const [colorBorder, setColorBorder] = useState('1px solid black');
-
-    useEffect(() =>{
-        const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-                    showBook && showBook();
-                }
-            };
-            document.addEventListener('click', handleClickOutside);
-            return () => {
-                document.removeEventListener('click', handleClickOutside);
-            };
-    }, []);
-    
-    const hendleBtn = () =>{
-        showBook();
-    }
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [email, setEmail] = useState('');
 
     const nameChange = e =>{
-        setFullName(e.target.value);
+        setName(e.target.value);
+    }
+    const surnameChange = e =>{
+        setSurname(e.target.value);
+    }
+    const emailChange = e =>{
+        setEmail(e.target.value);
     }
 
     const submitChange = e =>{
         e.preventDefault();
-
-        if(testFullName(fullName)){
-            const payloadObj = {
-                id: bookingElem.id,
-                fullName: setName(fullName),
-                date: date(),
-            }
-            dispatch(booking(payloadObj));
-            showBook();
+        const payloadObj = {
+            firstName: editeUpperCase(name),
+            lastName: editeUpperCase(surname),
+            email: email,
         }
-        setColorBorder('2px solid red');
+        dispatch(booking({payloadObj, element}));
     }
 
-    return (
-        <div className={styles.cart} ref={ref}>
-            <div>
-                <button className={stylesCart.btn} onClick={hendleBtn}>
-                    &#8678;
-                </button>
-            </div>
-            <p className={stylesCart.p}>Row {bookingElem.row} N` {elementNumber + 1}</p>
+    return(
+        <div className={styles.booking}>
+            <p className={styles.p}>Row {row} N` {number}</p>
+
             <form className={styles.form} onSubmit={submitChange}>
                 <input
                     className={styles.input}
+                    placeholder='First Name'
                     type='text'
-                    placeholder = 'Full Name'
-                    value={fullName}
+                    value={name}
                     onChange={nameChange}
-                    style={{border: colorBorder}}
                     required
                 />
-                <button type="submit" className={styles.btn}>
+                <input
+                    className={styles.input}
+                    placeholder='Last Name'
+                    type='text'
+                    value={surname}
+                    onChange={surnameChange}
+                    required
+                />
+                <input
+                    className={styles.input}
+                    placeholder='Email'
+                    type='email'
+                    value={email}
+                    onChange={emailChange}
+                    required
+                />
+                <button className={styles.btn} type="submit">
                     Save
                 </button>
+                
             </form>
         </div>
     )
-};
+}
 
 export default Booking;
 

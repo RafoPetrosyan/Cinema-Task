@@ -1,94 +1,81 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { setName, testFullName } from "../../helpers/constant";
-import { deleteBooking, editeFullNameChange } from "../../store/cinemaReducer";
+import { deleteBooking, edite } from "../../store/cinemaReducer";
 import styles from './Cart.module.css';
 
-const Cart = ({hendleCart, element, elementNumber}) =>{
+const Cart = ({element, row, number}) =>{
 
     const dispatch = useDispatch();
-    const ref = useRef(null);
-    const [editFyllName, setEditFullName] = useState(element.fullName);
-    const [showEdit, setShowEdit] = useState(false);
-    const [colorBorder, setColorBorder] = useState('1px solid black');
+    const [show, setShow] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const [changeValue, setChangeValue] = useState('');
 
-    useEffect(() =>{
-        const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-                    hendleCart && hendleCart();
-                }
-            };
-            document.addEventListener('click', handleClickOutside);
-            return () => {
-                document.removeEventListener('click', handleClickOutside);
-            };
-    }, []);
-    
-    const hendleBtn = () =>{
-        hendleCart();
+    const deleteBtn = () =>{
+        dispatch( deleteBooking(element.id) );
     }
 
-    const deletedBtn = (id) =>{
-        dispatch(deleteBooking(id));
-        hendleCart();
+    const changeInput = e =>{
+        setInputValue(e.target.value);
     }
 
-    const openEdite = () =>{
-        setShowEdit(true);
+    const editeBtn = (value, changeValue) =>{
+        setShow(prev => !prev);
+        setInputValue(value);
+        setChangeValue(changeValue);
     }
 
-    const editeName = e =>{
-        setEditFullName(e.target.value); 
-    }
-
-    const editeChange = e =>{
+    const submitChange = e =>{
         e.preventDefault();
-
-        if(testFullName(editFyllName)){
-
-            const payloadObj = {
-                id: element.id,
-                fullName: setName(editFyllName),     
-            }
-            dispatch(editeFullNameChange(payloadObj));
-            setShowEdit(false);
-        }
-        setColorBorder('2px solid red');
-        
+        dispatch( edite({element, changeValue, inputValue}) );
+        setShow(false);
     }
+
+    const {firstName, lastName, email} = element.userInfo;
 
     return(
-        <div className={styles.cart} ref={ref}>
+        <div className={styles.cart}>
+    
             <div className={styles.btnDiv}>
-                <button onClick={hendleBtn} className={styles.btn}>
-                    &#8678;
-                </button>
-                <button onClick={openEdite} className={styles.editeBtn}>
-                    Edite
-                </button>
-                <button onClick={() => deletedBtn(element.id)} className={styles.editeBtn}>
+                <button className={styles.deleteBtn} onClick={deleteBtn}> 
                     Delete
                 </button>
             </div>
+
             <div className={styles.text}>
-                <p className={styles.p}>Row {element.row} N` {elementNumber + 1}</p>
-                <p className={styles.p}>{element.fullName}</p>
-                <p className={styles.p}>{element.date}</p>
+                <div className={styles.info}>
+                    <p className={styles.p}><span>Row`</span> {row} N` {number}</p>
+                </div>
+                <div className={styles.info}>
+                    <p className={styles.p}><span>First Name`</span> {firstName}</p>
+                    <button onClick={() => editeBtn(firstName, 'firstName')} className={styles.editeBtn}>edite</button>
+                </div>
+                <div className={styles.info}>
+                    <p className={styles.p}><span>Last Name`</span> {lastName}</p>
+                    <button onClick={() => editeBtn(lastName, 'lastName')} className={styles.editeBtn}>edite</button>
+                </div>
+                <div className={styles.info}>
+                    <p className={styles.p}><span>Email`</span> {email}</p>
+                    <button onClick={() => editeBtn(email, 'email')} className={styles.editeBtn}>edite</button>
+                </div>
+                <div className={styles.info}>
+                    <p className={styles.p}><span>Date`</span> {element.date}</p>
+                </div>
             </div>
-            {
-                showEdit && <form onSubmit={editeChange} className={styles.form}>
-                    <input 
-                        type='text'
-                        value={editFyllName}
-                        onChange={editeName}
-                        style={{border: colorBorder}}
-                        required
-                    />
-                    <button>Save</button>
-                </form>
-            }
+
+            {show && <form className={styles.form} onSubmit={submitChange}>
+                <input
+                    className={styles.input}
+                    type='text'
+                    value={inputValue}
+                    onChange={changeInput}
+                    required
+                />
+                <button className={styles.btn} type="submit">Save</button>
+            </form>}
+
         </div>
     )
 };
 
 export default Cart;
+

@@ -1,468 +1,359 @@
+import { date } from "../helpers/constant";
 
 const defaultState = {
     cinemaList: [
         [
             {
                 id: 1,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 1,
-                occupation: false,
             },
             {
                 id: 2,
-                fullName: 'Karo Manukyan',
-                date: '01/02/22',
-                row: 1,
-                occupation: true,
+                userInfo: {
+                    firstName: 'Karo',
+                    lastName: 'Manukyan',
+                    email: 'karo.manukyan.@gmail.com'
+                },
+                date: '01/02/22   17:33',
             },
             {
                 id: 3,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 1,
-                occupation: false,
             },
             {
                 id: 4,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 1,
-                occupation: false,
             },
             {
                 id: 5,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 1,
-                occupation: false,
             },
             {
                 id: 6,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 1,
-                occupation: false,
             },
             {
                 id: 7,
-                fullName: 'Poxos Poxosyan',
-                date: '01/02/22',
-                row: 1,
-                occupation: true,
+                userInfo: {
+                    firstName: 'Mane',
+                    lastName: 'Asatryan',
+                    email: 'maneasatryan@gmail.com',
+                },
+                date: '01/02/22   12:20',
             },
             {
                 id: 8,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 1,
-                occupation: false,
             },
         ],
         [
             {
                 id: 9,
-                fullName: '',
+                userInfo: null,
                 date: '',
                 row: 2,
                 occupation: false,
             },
             {
                 id: 10,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 2,
-                occupation: false,
             },
             {
                 id: 11,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 2,
-                occupation: false,
             },
             {
                 id: 12,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 2,
-                occupation: false,
             },
             {
                 id: 13,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 2,
-                occupation: false,
             },
             {
                 id: 14,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 2,
-                occupation: false,
             },
             {
                 id: 15,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 2,
-                occupation: false,
             },
             {
                 id: 16,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 2,
-                occupation: false,
             },
         ],
         [
             {
                 id: 17,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 3,
-                occupation: false,
             },
             {
                 id: 18,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 3,
-                occupation: false,
             },
             {
                 id: 19,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 3,
-                occupation: false,
             },
             {
                 id: 20,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 3,
-                occupation: false,
             },
             {
                 id: 21,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 3,
-                occupation: false,
             },
             {
                 id: 22,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 3,
-                occupation: false,
             },
             {
                 id: 23,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 3,
-                occupation: false,
             },
             {
                 id: 24,
-                fullName: 'Armen Sahakyan',
-                date: '02/02/22',
-                row: 3,
-                occupation: true,
+                userInfo: {
+                    firstName: 'Karen',
+                    lastName: 'Sahakyan',
+                    email: 'karensahakyan@gmail.com'
+                },
+                date: '02/02/22   13:40',
             },
         ],
         [
             {
                 id: 25,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
             {
                 id: 26,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
             {
                 id: 27,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
             {
                 id: 28,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
             {
                 id: 29,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
             {
                 id: 30,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
             {
                 id: 31,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
             {
                 id: 32,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 4,
-                occupation: false,
             },
         ],
         [
             {
                 id: 33,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
             {
                 id: 34,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
             {
                 id: 35,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
             {
                 id: 36,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
             {
                 id: 37,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
             {
                 id: 38,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
             {
                 id: 39,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
             {
                 id: 40,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 5,
-                occupation: false,
             },
         ],
         [
             {
                 id: 41,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
             {
                 id: 42,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
             {
                 id: 43,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
             {
                 id: 44,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
             {
                 id: 45,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
             {
                 id: 46,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
             {
                 id: 47,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
             {
                 id: 48,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 6,
-                occupation: false,
             },
         ],
         [
             {
                 id: 49,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 7,
-                occupation: false,
             },
             {
                 id: 50,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 7,
-                occupation: false,
             },
             {
                 id: 51,
-                fullName: 'Mane Karapetyan',
-                date: '03/02/22',
-                row: 7,
-                occupation: true,
+                userInfo: {
+                    firstName: 'Arman',
+                    lastName: 'Asatryan',
+                    email: 'arman.asatryan@gmail.com'
+                },
+                date: '03/02/22  18:50',
             },
             {
                 id: 52,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 7,
-                occupation: false,
             },
             {
                 id: 53,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 7,
-                occupation: false,
             },
             {
                 id: 54,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 7,
-                occupation: false,
             },
             {
                 id: 55,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 7,
-                occupation: false,
             },
             {
                 id: 56,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 7,
-                occupation: false,
             },
         ],
         [
             {
                 id: 57,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
             {
                 id: 58,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
             {
                 id: 59,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
             {
                 id: 60,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
             {
                 id: 61,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
             {
                 id: 62,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
             {
                 id: 63,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
             {
                 id: 64,
-                fullName: '',
+                userInfo: null,
                 date: '',
-                row: 8,
-                occupation: false,
             },
         ],
         
@@ -473,15 +364,15 @@ const ACTION_TYPE = {
     BOOKING: 'BOOKING',
     DELETE_BOOKING: 'DELETE_BOOKING',
     EDITE_NAME: 'EDITE_NAME',
+    ADD_LOCAL_STORAGE: 'ADD_LOCAL_STORAGE',
 };
 
 const bookingStore = (arr, payload) =>{
     return arr.map(item =>{
         return item.map(element =>{
-            if(element.id === payload.id){
-                element.fullName = payload.fullName;
-                element.date = payload.date;
-                element.occupation = true;
+            if(element.id === payload.element.id){
+                element.userInfo = payload.payloadObj;
+                element.date = date();
                 return element;
             }
             return element;
@@ -493,9 +384,7 @@ const deleteBookingStore = (arr, id) =>{
     return arr.map(item =>{
         return item.map(element =>{
             if(element.id === id){
-                element.fullName = '';
-                element.date = '';
-                element.occupation = false;
+                element.userInfo = null;
                 return element;
             }
             return element;
@@ -506,13 +395,13 @@ const deleteBookingStore = (arr, id) =>{
 const editeBookingStore = (arr, payload) =>{
     return arr.map(item =>{
         return item.map(element =>{
-            if(element.id === payload.id){
-                element.fullName = payload.fullName;
+            if(element.id === payload.element.id){
+                element.userInfo[payload.changeValue] = payload.inputValue;
                 return element;
             }
             return element;
         })
-    })
+    }) 
 }
 
 export const cinemaReducer = (state = defaultState, action) =>{
@@ -527,6 +416,10 @@ export const cinemaReducer = (state = defaultState, action) =>{
         case ACTION_TYPE.EDITE_NAME:
             return {...state, cinemaList: editeBookingStore(state.cinemaList, action.payload)};
 
+        case ACTION_TYPE.ADD_LOCAL_STORAGE:
+            console.log(action.payload, 'action-payload');
+            return {...state, cinemaList: [...action.payload]};
+
         default:
             return state;
     }
@@ -534,4 +427,5 @@ export const cinemaReducer = (state = defaultState, action) =>{
 
 export const booking = (payload) => ({type: ACTION_TYPE.BOOKING, payload});
 export const deleteBooking = (payload) => ({type: ACTION_TYPE.DELETE_BOOKING, payload});
-export const editeFullNameChange = (payload) => ({type: ACTION_TYPE.EDITE_NAME, payload});
+export const edite = (payload) => ({type: ACTION_TYPE.EDITE_NAME, payload});
+export const addLocalStorage = (payload) => ({type: ACTION_TYPE.ADD_LOCAL_STORAGE, payload});

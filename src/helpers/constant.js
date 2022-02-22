@@ -1,4 +1,3 @@
-export const numbersTh = Array.from({length: 8}, (e, i) => i + 1);
 
 export const date = () =>{
     let date = new Date()
@@ -15,16 +14,6 @@ export const date = () =>{
 
 }
 
-export const testFullName = (fullName) =>{
-    let testName = fullName.split(' ');
-    if((testName.length === 2) && (testName[0].length > 2) && (testName[1].length >= 2)){
-        return true;
-    }
-    return false;
-}
-
-export const setName = (fullName) =>{
-    return fullName.split(' ').map(item =>{
-        return item.substring(0, 1).toUpperCase() + item.substring(1);
-    }).join(' ');
+export const editeUpperCase = (name) =>{
+    return name.substring(0, 1).toUpperCase() + name.substring(1);
 }

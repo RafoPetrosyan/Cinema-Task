@@ -1,49 +1,49 @@
-import React, { useCallback, useState } from 'react';
-import Cart from './components/Carts/Cart';
-import styles from './App.module.css';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addLocalStorage } from './store/cinemaReducer';
 import Table from './components/Table/Table';
-import Booking from './components/Booking/Booking';
+import PopupWrapper from './components/PopupWrapper/PopupWrapper';
+import PopupCart from './components/PopupWrapper/PopupCart/PopupCart';
+import styles from './App.module.css';
 
 
 const App = () =>{
-  const [show, setShow] = useState(false);
-  const [showBooking, setShowBooking] = useState(false);
-  const [element, setElement] = useState({});
-  const [elementNumber, setElementNumber] = useState(null);
-  const [bookingElem, setBookingElem] = useState('');
 
-  const hendleCart = useCallback(() =>{
-        setShow(false);
-  }, []);
+      const cinemaList = useSelector(state => state.cinemaList.cinemaList);
+      const dispatch = useDispatch();
 
-  const showCart = useCallback((elem, index) =>{
-        setElement(elem);
-        setElementNumber(index);
-        setShowBooking(false);
-        setShow(true);
-  }, []);
+      const [show, setShow] = useState(false);
+      const [elementObj, setElementObj] = useState({});
 
-  const showBook = useCallback(() =>{
-        setShowBooking(false);
-  }, []);
+      useEffect(() =>{
+            return () =>{
+                  localStorage.setItem('Cinema-list', JSON.stringify(cinemaList));
+            }
+      });
 
-  const openBooking = useCallback((elem, index) =>{
-      setBookingElem(elem);
-      setElementNumber(index);
-      setShow(false);
-      setShowBooking(true);
-  }, []);
+      useEffect(() =>{
+            let localData = localStorage.getItem('Cinema-list');
+            if(localData) {
+                  dispatch( addLocalStorage(JSON.parse(localData)) );
+            }
+      }, []);
+
+      const onClose = useCallback(() =>{
+            setShow(false);
+      }, []);
+
+      const openPopup = useCallback((element, row, number) =>{
+            setShow(true);
+            setElementObj({element, row, number});
+      }, []);
 
       return(
-        <div className={styles.app}>
+        <div className={show ? styles.appModale : styles.app} >
+            <Table openPopup={openPopup} cinemaList={cinemaList} show={show}/>
 
-            <Table showCart={showCart} openBooking={openBooking}/>
-            {
-                  show && <Cart hendleCart={hendleCart} element={element} elementNumber={elementNumber}/>
-            }
-            {
-                  showBooking && <Booking showBook={showBook} bookingElem={bookingElem} elementNumber={elementNumber}/>
-            }
+            {show && <PopupWrapper onClose={onClose}>
+                  <PopupCart elementObj={elementObj}/>
+            </PopupWrapper>}
         </div>
       )
 };

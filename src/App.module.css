@@ -1,7 +1,18 @@
 .app{
     width: 100%;
+    height: 800px;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
+    
+}
+.appModale{
+    width: 100%;
+    height: 800px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.45); 
 }

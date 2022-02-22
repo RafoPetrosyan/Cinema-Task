@@ -1,0 +1,25 @@
+
+.popupWrapper{
+    width: 470px;
+    height: 330px;
+    position: relative;
+    z-index: 1;
+    background-color: #dfedff;
+    margin-top: 240px;
+    margin-left: 80px;
+    transform: scale(1.2);
+    transition: transform .1s; 
+}
+.popupWrapper:target {
+    visibility: visible;
+    opacity: 1;
+  }
+.btn{
+    border: none;
+    font-size: 30px;
+    background-color: #dfedff;
+    cursor: pointer;
+}
+.btn:hover{
+    color: red;
+}

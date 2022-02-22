@@ -3,8 +3,22 @@
     height: 700px;
     position: absolute;
     z-index: 0;
+    opacity: 1;
+    transition: opacity 500ms, transform 500ms;
+}
+.tableModale{
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    z-index: 0;
+    opacity: 0.5;
+    transition: opacity 300ms, transform 300ms;
 }
 .table th, td{
+    width: 70px;
+    height: 70px;
+}
+.tableModale th, td{
     width: 70px;
     height: 70px;
 }
