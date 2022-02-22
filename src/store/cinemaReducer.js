@@ -417,7 +417,6 @@ export const cinemaReducer = (state = defaultState, action) =>{
             return {...state, cinemaList: editeBookingStore(state.cinemaList, action.payload)};
 
         case ACTION_TYPE.ADD_LOCAL_STORAGE:
-            console.log(action.payload, 'action-payload');
             return {...state, cinemaList: [...action.payload]};
 
         default:
