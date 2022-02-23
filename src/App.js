@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addLocalStorage } from './store/cinemaReducer';
 import Table from './components/Table/Table';
 import PopupWrapper from './components/PopupWrapper/PopupWrapper';
 import PopupCart from './components/PopupWrapper/PopupCart/PopupCart';
+import { setCinemaList } from './store/cinemaReducer';
 import styles from './App.module.css';
 
 
@@ -12,21 +12,20 @@ const App = () =>{
       const cinemaList = useSelector(state => state.cinemaList.cinemaList);
       const dispatch = useDispatch();
 
-      const [show, setShow] = useState(false);
-      const [elementObj, setElementObj] = useState({});
+      useEffect(() =>{
+            return () =>{
+                  localStorage.setItem('cinema-list', JSON.stringify(cinemaList));
+            }
+      }, [cinemaList]);
 
       useEffect(() =>{
             return () =>{
-                  localStorage.setItem('Cinema-list', JSON.stringify(cinemaList));
+                  dispatch(setCinemaList(JSON.parse(localStorage.getItem('cinema-list'))));
             }
-      });
+      }, [])
 
-      useEffect(() =>{
-            let localData = localStorage.getItem('Cinema-list');
-            if(localData) {
-                  dispatch( addLocalStorage(JSON.parse(localData)) );
-            }
-      }, []);
+      const [show, setShow] = useState(false);
+      const [elementObj, setElementObj] = useState({});
 
       const onClose = useCallback(() =>{
             setShow(false);

@@ -361,7 +361,6 @@ const defaultState = {
 
 const ACTION_TYPE = {
     SET_CINEMA_LIST: 'SET_CINEMA_LIST',
-    ADD_LOCAL_STORAGE: 'ADD_LOCAL_STORAGE',
 };
 
 export const cinemaReducer = (state = defaultState, action) =>{
@@ -378,5 +377,6 @@ export const cinemaReducer = (state = defaultState, action) =>{
     }
 };
 
-export const setState = (payload) => ({type: ACTION_TYPE.SET_CINEMA_LIST, payload});
-export const addLocalStorage = (payload) => ({type: ACTION_TYPE.ADD_LOCAL_STORAGE, payload});
+export const setCinemaList = (payload) => ({type: ACTION_TYPE.SET_CINEMA_LIST, payload});
+
+

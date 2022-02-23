@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { date, editeUpperCase, setElement } from "../../helpers/constant";
-import { setState } from "../../store/cinemaReducer";
+import { setCinemaList } from "../../store/cinemaReducer";
 import styles from './Booking.module.css';
 
 const Booking = ({elementObj, editeObj}) =>{
@@ -33,7 +33,7 @@ const Booking = ({elementObj, editeObj}) =>{
             email: email,
         }
         element.date = date();
-        dispatch(setState(setElement(cinemaList, element)));
+        dispatch(setCinemaList(setElement(cinemaList, element)));
     }
 
     return(

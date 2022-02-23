@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setElement } from "../../helpers/constant";
-import { setState } from "../../store/cinemaReducer";
+import { setCinemaList } from "../../store/cinemaReducer";
 import styles from './Cart.module.css';
 
 const Cart = ({elementObj, editeChange}) =>{
@@ -14,7 +14,7 @@ const Cart = ({elementObj, editeChange}) =>{
 
     const deleteBtn = () =>{
         element.userInfo = null;
-        dispatch( setState(setElement(cinemaList, element)));
+        dispatch( setCinemaList(setElement(cinemaList, element)));
     }
 
     const editeBtn = () =>{
@@ -26,20 +26,16 @@ const Cart = ({elementObj, editeChange}) =>{
         <div className={styles.cart}>
     
             <div className={styles.btnDiv}>
-                <button className={styles.btn} onClick={deleteBtn}> 
-                    Delete
-                </button>
-                <button className={styles.btn} onClick={editeBtn}>
-                    Edite
-                </button>
+                <button className={styles.btn} onClick={deleteBtn}>Delete</button>
+                <button className={styles.btn} onClick={editeBtn}>Edite</button>
             </div>
 
             <div>
-                    <p className={styles.p}><span>Row`</span> {row} N` {number}</p>
-                    <p className={styles.p}><span>First Name`</span> {firstName}</p>
-                    <p className={styles.p}><span>Last Name`</span> {lastName}</p>
-                    <p className={styles.p}><span>Email`</span> {email}</p>
-                    <p className={styles.p}><span>Date`</span> {element.date}</p>
+                <p className={styles.p}><span>Row`</span> {row} N` {number}</p>
+                <p className={styles.p}><span>First Name`</span> {firstName}</p>
+                <p className={styles.p}><span>Last Name`</span> {lastName}</p>
+                <p className={styles.p}><span>Email`</span> {email}</p>
+                <p className={styles.p}><span>Date`</span> {element.date}</p>
             </div>
 
         </div>
