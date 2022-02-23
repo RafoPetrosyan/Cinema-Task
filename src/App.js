@@ -18,6 +18,7 @@ const App = () =>{
       useEffect(() =>{
             return () =>{
                   localStorage.setItem('Cinema-list', JSON.stringify(cinemaList));
+                  console.log(1);
             }
       });
 
@@ -38,7 +39,7 @@ const App = () =>{
       }, []);
 
       return(
-        <div className={show ? styles.appModale : styles.app} >
+        <div className={styles.app}>
             <Table openPopup={openPopup} cinemaList={cinemaList} show={show}/>
 
             {show && <PopupWrapper onClose={onClose}>

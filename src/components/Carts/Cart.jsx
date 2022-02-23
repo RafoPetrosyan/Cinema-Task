@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { deleteBooking, edite } from "../../store/cinemaReducer";
+import { setState } from "../../store/cinemaReducer";
 import styles from './Cart.module.css';
 
 const Cart = ({element, row, number}) =>{
 
     const dispatch = useDispatch();
+    
     const [show, setShow] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [changeValue, setChangeValue] = useState('');
 
     const deleteBtn = () =>{
-        dispatch( deleteBooking(element.id) );
+        element.userInfo = null;
+        dispatch( setState(element));
     }
 
     const changeInput = e =>{
@@ -26,7 +28,8 @@ const Cart = ({element, row, number}) =>{
 
     const submitChange = e =>{
         e.preventDefault();
-        dispatch( edite({element, changeValue, inputValue}) );
+        element.userInfo[changeValue] = inputValue;
+        dispatch(setState(element));
         setShow(false);
     }
 

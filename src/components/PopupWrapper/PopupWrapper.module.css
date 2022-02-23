@@ -2,18 +2,21 @@
 .popupWrapper{
     width: 470px;
     height: 330px;
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    z-index: 4;
     background-color: #dfedff;
-    margin-top: 240px;
-    margin-left: 80px;
-    transform: scale(1.2);
-    transition: transform .1s; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
-.popupWrapper:target {
-    visibility: visible;
-    opacity: 1;
-  }
+.modalComponent{
+    height: 100%;
+    width: 100%;
+    background-color: #00000091;
+    z-index: 1;
+}
 .btn{
     border: none;
     font-size: 30px;

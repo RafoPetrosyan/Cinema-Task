@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { editeUpperCase } from "../../helpers/constant";
-import { booking } from "../../store/cinemaReducer";
+import { date, editeUpperCase } from "../../helpers/constant";
+import { setState } from "../../store/cinemaReducer";
 import styles from './Booking.module.css';
 
 const Booking = ({element, row, number}) =>{
 
     const dispatch = useDispatch();
+    
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
@@ -23,12 +24,14 @@ const Booking = ({element, row, number}) =>{
 
     const submitChange = e =>{
         e.preventDefault();
-        const payloadObj = {
+
+        element.userInfo = {
             firstName: editeUpperCase(name),
             lastName: editeUpperCase(surname),
             email: email,
         }
-        dispatch(booking({payloadObj, element}));
+        element.date = date();
+        dispatch(setState(element));
     }
 
     return(

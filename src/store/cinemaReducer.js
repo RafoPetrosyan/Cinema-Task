@@ -1,4 +1,3 @@
-import { date } from "../helpers/constant";
 
 const defaultState = {
     cinemaList: [
@@ -361,70 +360,32 @@ const defaultState = {
 };
 
 const ACTION_TYPE = {
-    BOOKING: 'BOOKING',
-    DELETE_BOOKING: 'DELETE_BOOKING',
-    EDITE_NAME: 'EDITE_NAME',
+    SET_STATE: 'SET_STATE',
     ADD_LOCAL_STORAGE: 'ADD_LOCAL_STORAGE',
 };
 
-const bookingStore = (arr, payload) =>{
+const setElement = (arr, payload) =>{
     return arr.map(item =>{
         return item.map(element =>{
-            if(element.id === payload.element.id){
-                element.userInfo = payload.payloadObj;
-                element.date = date();
-                return element;
-            }
+            if(element.id === payload.id) element = payload;
             return element;
         })
     })
-}
-
-const deleteBookingStore = (arr, id) =>{
-    return arr.map(item =>{
-        return item.map(element =>{
-            if(element.id === id){
-                element.userInfo = null;
-                return element;
-            }
-            return element;
-        })
-    })
-}
-
-const editeBookingStore = (arr, payload) =>{
-    return arr.map(item =>{
-        return item.map(element =>{
-            if(element.id === payload.element.id){
-                element.userInfo[payload.changeValue] = payload.inputValue;
-                return element;
-            }
-            return element;
-        })
-    }) 
 }
 
 export const cinemaReducer = (state = defaultState, action) =>{
     switch(action.type){
 
-        case ACTION_TYPE.BOOKING:
-            return {...state, cinemaList: bookingStore(state.cinemaList, action.payload)}
-
-        case ACTION_TYPE.DELETE_BOOKING:
-            return {...state, cinemaList: deleteBookingStore(state.cinemaList, action.payload)};
-        
-        case ACTION_TYPE.EDITE_NAME:
-            return {...state, cinemaList: editeBookingStore(state.cinemaList, action.payload)};
+        case ACTION_TYPE.SET_STATE:
+            return {...state, cinemaList: setElement(state.cinemaList, action.payload)};
 
         case ACTION_TYPE.ADD_LOCAL_STORAGE:
             return {...state, cinemaList: [...action.payload]};
 
         default:
-            return state;
+            return state;   
     }
 };
 
-export const booking = (payload) => ({type: ACTION_TYPE.BOOKING, payload});
-export const deleteBooking = (payload) => ({type: ACTION_TYPE.DELETE_BOOKING, payload});
-export const edite = (payload) => ({type: ACTION_TYPE.EDITE_NAME, payload});
+export const setState = (payload) => ({type: ACTION_TYPE.SET_STATE, payload});
 export const addLocalStorage = (payload) => ({type: ACTION_TYPE.ADD_LOCAL_STORAGE, payload});

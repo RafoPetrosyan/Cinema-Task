@@ -10,7 +10,7 @@ const Table = ({openPopup, cinemaList, show}) =>{
     }
 
     return(
-        <table className={show ? styles.tableModale : styles.table}>
+        <table className={styles.table}>
         <thead>
             <tr>
               <th></th>
