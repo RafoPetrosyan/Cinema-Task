@@ -360,32 +360,23 @@ const defaultState = {
 };
 
 const ACTION_TYPE = {
-    SET_STATE: 'SET_STATE',
+    SET_CINEMA_LIST: 'SET_CINEMA_LIST',
     ADD_LOCAL_STORAGE: 'ADD_LOCAL_STORAGE',
 };
-
-const setElement = (arr, payload) =>{
-    return arr.map(item =>{
-        return item.map(element =>{
-            if(element.id === payload.id) element = payload;
-            return element;
-        })
-    })
-}
 
 export const cinemaReducer = (state = defaultState, action) =>{
     switch(action.type){
 
-        case ACTION_TYPE.SET_STATE:
-            return {...state, cinemaList: setElement(state.cinemaList, action.payload)};
-
-        case ACTION_TYPE.ADD_LOCAL_STORAGE:
-            return {...state, cinemaList: [...action.payload]};
+        case ACTION_TYPE.SET_CINEMA_LIST:
+            return {
+                ...state, 
+                cinemaList: action.payload
+            };
 
         default:
             return state;   
     }
 };
 
-export const setState = (payload) => ({type: ACTION_TYPE.SET_STATE, payload});
+export const setState = (payload) => ({type: ACTION_TYPE.SET_CINEMA_LIST, payload});
 export const addLocalStorage = (payload) => ({type: ACTION_TYPE.ADD_LOCAL_STORAGE, payload});

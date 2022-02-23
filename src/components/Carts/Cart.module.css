@@ -2,9 +2,13 @@
     width: 100%;
 }
 .btnDiv{
+    width: 90%;
+    margin: 0 auto;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
-.deleteBtn{
+.btn{
     margin-left: 10px;
     margin-top: 10px;
     font-size: 16px;
@@ -12,45 +16,15 @@
     border: none;
     cursor: pointer;
 }
-.deleteBtn:hover{
-    color: red;
-}
-.editeBtn{
-    background-color: #ace8f3;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    color: #ace8f3;
-}
-.info{
-    width: 70%;
-    margin: 10px auto;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-.editeBtn:hover{
-    color: red;
-}
-.info:hover{
+.btn:hover{
     color: red;
 }
 .p{
     font-size: 16px;
+    margin-left: 110px;
     margin-top: 0;
     margin-bottom: 3px;
 }
 .p span{
     color: red;
-}
-.input{
-    margin-left: 15%;
-    width: 60%;
-}
-.btn{
-    cursor: pointer;
-}
-.btn:hover{
-    color: white;
-    background-color: black;
 }
