@@ -18,7 +18,6 @@ const App = () =>{
       useEffect(() =>{
             return () =>{
                   localStorage.setItem('Cinema-list', JSON.stringify(cinemaList));
-                  console.log(1);
             }
       });
 
