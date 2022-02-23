@@ -355,7 +355,7 @@ const defaultState = {
                 date: '',
             },
         ],
-        
+
     ],
 };
 
@@ -363,20 +363,20 @@ const ACTION_TYPE = {
     SET_CINEMA_LIST: 'SET_CINEMA_LIST',
 };
 
-export const cinemaReducer = (state = defaultState, action) =>{
-    switch(action.type){
-
+export const cinemaReducer = (state = defaultState, action) => {
+    switch (action.type) {
         case ACTION_TYPE.SET_CINEMA_LIST:
+            console.log(action.payload, '-----------');
             return {
-                ...state, 
+                ...state,
                 cinemaList: action.payload
             };
 
         default:
-            return state;   
+            return state;
     }
 };
 
-export const setCinemaList = (payload) => ({type: ACTION_TYPE.SET_CINEMA_LIST, payload});
+export const setCinemaList = (payload) => ({ type: ACTION_TYPE.SET_CINEMA_LIST, payload });
 
 
